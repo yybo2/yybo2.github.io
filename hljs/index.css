@@ -1,0 +1,91 @@
+.hljs {
+    display:block;
+    overflow-x:auto;
+    padding:.5em;
+    color:#abb2bf;
+    background:#282c34
+}
+
+/*hhhhhhh*/
+
+.highlight{
+  color: #a09c9c;
+  font-size: 16px;
+  font-family: Fira Code !important;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+* > pre > span{
+    font-family: Fira Code;
+}
+
+.gutter {
+    display: none;
+}
+
+span .keyword,span .operator {
+    color:#f92672
+}
+span .pattern-match {
+    color:#f92672
+}
+span .pattern-match span .constructor {
+    color:#61aeee
+}
+span .function {
+    color:#61aeee
+}
+span .function span .params {
+    color:#a6e22e
+}
+span .function span .params span .typing {
+    color:#fd971f
+}
+span .module-access span .module {
+    color:#7e57c2
+}
+span .constructor {
+    color:#e2b93d
+}
+span .constructor span .string {
+    color:#9ccc65
+}
+span .comment,span .quote {
+    color:#b18eb1;
+    font-style:italic
+}
+span .doctag,span .formula {
+    color:#c678dd
+}
+span .deletion,span .name,span .section,span .selector-tag,span .subst {
+    color:#e06c75
+}
+span .literal {
+    color:#56b6c2
+}
+span .addition,span .attribute,span .meta-string,span .regexp,span .string {
+    color:#98c379
+}
+span .built_in,span .class span .title {
+    color:#e6c07b
+}
+span .attr,span .number,span .selector-attr,span .selector-class,span .selector-pseudo,span .template-variable,span .type,span .variable {
+    color:#d19a66
+}
+span .bullet,span .link,span .meta,span .selector-id,span .symbol,span .title {
+    color:#61aeee
+}
+span .emphasis {
+    font-style:italic
+}
+span .strong {
+    font-weight:700
+}
+span .link {
+    text-decoration:underline
+}
+
+

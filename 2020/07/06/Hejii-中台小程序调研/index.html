@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <link rel="icon" href="/img/bo.png">
+
+  
+      <meta name="author" content="Bo2">
+  
+  
+  
+  
+  
+    <link rel="alternate" href="/atom.xml " title="Bo2" type="application/atom+xml">
+  
+  
+  <title>Hejii-中台小程序调研 | Bo2</title>
+
+  
+
+  
+
+  
+
+
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&amp;display=swap"  media="print" onload="this.media='all'">
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/style.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css">
+    
+  
+
+  <link rel="stylesheet" href="/hljs/index.css">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/highlight.min.js"></script>
+  <script>
+    window.onload = (function () {
+      setTimeout(function () {
+        hljs.initHighlightingOnLoad();
+      },0)
+    })
+  </script>
+
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+</html>
+
+    
+
+
+<header class="header">
+    <div class="title animated fadeInDown">
+    <div class="title">
+        <a href="/" class="logo">Bo2</a>
+    </div>
+    </div> 
+    <div class="navbar animated fadeInDown">
+        <div class="motto">
+            <h2></h2>
+        </div>
+
+</header>
+
+
+
+    
+<div class="nav index" style="height: 60px;">
+    <div class="title animated fadeInDown">
+        <div class="layui-container"> 
+        
+            <div class="nav-logo"> <a href="https://github.com/yybo2" target="_blank" rel="noopener" title="一时开源一时爽，一直开源一直爽"><i class="fab fa-github" style="font-size: 36px;"></i></a> </div>
+         
+        <div class="nav-list">
+            <button> <span class=""></span><span style="display: block;"></span><span class=""></span> </button>
+            <ul class="layui-nav" lay-filter="">
+            
+            <li class="layui-nav-item">
+                <a href="/">
+                    <i class="fab fa-fort-awesome" aria-hidden="true"></i>
+                    首页
+                </a>
+            </li>
+            
+            <li class="layui-nav-item">
+                <a href="/tags/">
+                    <i class="fas fa-hashtag" aria-hidden="true"></i>
+                    标签
+                </a>
+            </li>
+            
+            <li class="layui-nav-item">
+                <a href="/archives/">
+                    <i class="far fa-calendar-check" aria-hidden="true"></i>
+                    归档
+                </a>
+            </li>
+            
+            <li class="layui-nav-item">
+                <a href="/categories/">
+                    <i class="far fa-folder-open" aria-hidden="true"></i>
+                    分类
+                </a>
+            </li>
+            
+            <li class="layui-nav-item">
+                <a href="/about/">
+                    <i class="fab fa-grav" aria-hidden="true"></i>
+                    关于
+                </a>
+            </li>
+            
+            <li class="layui-nav-item">
+            
+                <div id="dark" onclick="switchDarkMode()"></div>   
+                <script>
+                    if(localStorage.getItem('dark') === '1') {
+                        document.body.classList.add('dark');
+                    }
+                    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
+                </script>
+              
+            </li>  
+            <span class="layui-nav-bar" style="left: 342px; top: 78px; width: 0px; opacity: 0;"></span>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+<article id="post">
+  <div class="post-title"><h1>Hejii-中台小程序调研</h1></div>
+  <div class="post-date">
+        <span title="发表于 2020-07-06"><i class="far fa-calendar-alt" aria-hidden="true"></i> 2020-07-06</span>  |
+        <span title="更新于 2020-07-06"><i class="fas fa-history" aria-hidden="true"></i> 2020-07-06</span>
+        
+  </div>
+  <br>
+  <div class="content">
+      <div><h3 id="封装request-api-js"><a href="#封装request-api-js" class="headerlink" title="封装request (api.js)"></a>封装request (api.js)</h3>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 请求的错误不应该被调用方catch</span></span><br><span class="line"><span class="comment">   把错误的请求当成请求正常返回的结果</span></span><br><span class="line"><span class="comment">   由调用方根据状态码来判断是否成功 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 服务端IP+端口 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> API_URI = <span class="string">'http://192.168.0.22:8000'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 调用的请求方法 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url,requestType,params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wxRequest(url, requestType, params).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"req成功"</span>)</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"req失败"</span>)</span><br><span class="line">      resolve(&#123; <span class="attr">code</span>: <span class="number">-200</span>, <span class="attr">message</span>: <span class="string">"请求失败"</span>, <span class="attr">data</span>: err&#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 封装wx.request */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wxRequest</span>(<span class="params">url, requestType, params</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  wx.request(&#123;</span><br><span class="line">    url: <span class="string">`<span class="subst">$&#123;API_URI&#125;</span>/<span class="subst">$&#123;url&#125;</span>`</span>,</span><br><span class="line">    data: params ? params : <span class="literal">null</span>,</span><br><span class="line">    method: requestType ? requestType : <span class="string">'POST'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      resolve(res);</span><br><span class="line">    &#125;,</span><br><span class="line">    fail: <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">      reject(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 暴露方法给外部 */</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  request</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div>
+
+      <div class="post-copyright">
+      
+      </div>
+</div>
+    <div class="tags-back">
+      <div class="tags">
+        
+          <i class="fas fa-tags" aria-hidden="true"></i> <a href="/tags/%E5%AD%A6%E4%B9%A0/" class="tag">学习</a>
+        
+      </div>
+      <div class="back">
+        <a href="javascript:window.history.back();"><i class="fa fa-reply" aria-hidden="true"></i> 返回</a>
+        <span>· </span>
+        <a href="/"><i class="fa fa-home" aria-hidden="true"></i> 首页</a>
+      </div>
+
+
+      <hr>
+      <div class="post-nav">
+        
+        
+        <div class="post-nav-next post-nav-item">
+            <a href="/2020/07/02/Focus/" >代码块测试一下<i class="fa fa-chevron-right"></i></a>
+        </div>
+        
+      </div>
+      <div class="comments">
+        <!--<div class="comments">-->
+<!--    -->
+<!--      -->
+<!--      <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>-->
+<!--      <div id="comment" class="vcomment" ></div>-->
+<!--      <script>-->
+<!--          var notify = 'false' == true ? true : false;-->
+<!--          var verify = 'false' == true ? true : false;-->
+<!--          var GUEST_INFO = ['nick','mail','link'];-->
+<!--          var guest_info = 'nick,mail,link'.split(',').filter(function(item){-->
+<!--              return GUEST_INFO.indexOf(item) > -1-->
+<!--          });-->
+<!--          guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;-->
+<!--          window.valine = new Valine({-->
+<!--              el: '.vcomment',-->
+<!--              notify: notify,-->
+<!--              verify: verify,-->
+<!--              appId: "",-->
+<!--              appKey: "",-->
+<!--              avatar: "mm",-->
+<!--              placeholder: "Just go go",-->
+<!--              guest_info:guest_info,-->
+<!--              pageSize:'10',-->
+<!--              recordIP: 'false',-->
+<!--              serverURLs: "",-->
+<!--              emojiCDN: "",-->
+<!--              enableQQ: "true",-->
+<!--          });-->
+<!--      </script>-->
+<!--    -->
+<!--  </div>-->
+
+      </div>
+</article>
+
+
+    
+<a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+<script>
+    window.onscroll = function() {scrollFunction()};
+     
+    function scrollFunction() {console.log(121);
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("gotop").style.display = "block";
+        } else {
+            document.getElementById("gotop").style.display = "none";
+        }
+    }
+     
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    
+
+
+
+
+
+
+    
+<div id="bottom-outer">
+    <div id="bottom-inner">
+        © 2020 <i class="fa fa-heart" id="heart"></i> Bo2
+<!--        <br>-->
+<!--        Powered by-->
+<!--        <a href="http://hexo.io" target="_blank" rel="noopener">hexo</a> | Theme is <a href="https://github.com/yybo2" target="_blank" rel="noopener">leerau</a>-->
+<!--        -->
+
+    </div>
+  </div>
+<script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
+
+
+  
+    <script src="/js/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.3/build/highlight.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.7.0/dist/highlightjs-line-numbers.min.js"></script>
+  
+
+
+
+  <script>
+    $("img").not('.page img').not('.nav-logo img').each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      $(this).wrap(element);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
+  
+
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+
+<script>
+  var btntop = $('#gotop');
+  btntop.on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: 0 }, '300');
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('code.hljs').each(function (i, block) {
+      hljs.lineNumbersBlock(block);
+    });
+  });
+</script>
+
+
+
+
+
+</html>
