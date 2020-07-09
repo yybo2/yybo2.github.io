@@ -26,6 +26,12 @@
     display: none;
 }
 
+
+
+
+
+
+
 span .keyword,span .operator {
     color:#f92672
 }
@@ -87,5 +93,4 @@ span .strong {
 span .link {
     text-decoration:underline
 }
-
 
