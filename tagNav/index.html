@@ -1,0 +1,162 @@
+<head>
+  <title>CSS TAGNAV效果</title>
+</head>
+<div class="main-class">
+	<div>
+		<div class="title">标题1</div>
+		<div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+		</div>
+	</div>
+	<div>
+		<div>标题2</div>
+		<div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+		</div>
+	</div>
+	<div>
+		<div>标题3</div>
+		<div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+		</div>
+	</div>
+	<div>
+		<div>标题4</div>
+		<div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+			<div>我是子项目</div>
+		</div>
+	</div>
+</div>
+
+<style lang="less">
+
+	@keyframes example {
+		0% {
+			opacity: .99999;
+			transform: rotateX(90deg);
+		}
+
+		30% {	
+			opacity: .99999;
+			transform: rotateX(-30deg) rotateY(-5deg);
+			animation-timing-function: ease-in-out;
+		}
+
+		65% {
+			opacity: .99999;
+			transform: rotateX(30deg) rotateY(-5deg);
+			animation-timing-function: ease-in-out;
+		}
+
+		100% {
+			opacity: .99999;
+			transform: rotateX(0) rotateY(0deg);
+			animation-timing-function: ease-in-out;
+		}
+	}
+
+	.main-class{
+		display: flex;
+		/*border-top: 1px solid #b7b7b7;*/
+		border-left: 1px solid #b7b7b7;
+    	width: max-content;
+    	margin: 200px auto;
+	}
+	.main-class > div:nth-child(n)>div:nth-child(1) {
+		border-right: 1px solid #b7b7b7;
+		/*border-bottom: 1px solid #b7b7b7;*/
+		transition: all .25s ease-in-out;		
+		font-size: 14px;
+		color: #4b4b4b;
+		font-weight: bold;
+		background: #cccccc;
+		padding: 5px 28px;
+	}
+	.main-class > div:nth-child(n){
+		position: relative;
+				perspective: 1500;
+		-webkit-perspective: 1500;
+	}
+
+	.main-class > div:nth-child(n)>div:nth-child(2) {
+		color: #fff;
+		background: #4b4b4b;
+		position: absolute;
+		width: 200px;
+		/*padding: 10px 0px;*/
+		line-height: 40px;
+		transform-origin: top;
+		opacity: 0;
+		transform-origin: 50% 0%;
+		box-shadow: 1px 1px 7px rgba(0,0,0,.5);
+		border-radius: 0 0 8px 8px;
+		z-index: 999;
+		transition: all .15s linear;
+		visibility: hidden;
+	}
+
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n) {
+		padding: 0 20px; 
+/*		border-top: .1em dashed #4b4b4b;
+		border-bottom: .1em dashed #4b4b4b;*/
+		cursor: pointer;
+	}
+
+	.main-class > div:nth-child(n):hover >div:nth-child(1) {
+		color: skyblue;
+		background: #4b4b4b;
+	}
+
+
+	.main-class > div:nth-child(n)>div:nth-child(1):hover+div{
+		visibility: visible;
+		animation-name: example;
+		background: #333;
+		opacity: 1;
+		box-shadow: 1px 1px 7px rgba(0,0,0,.5);
+		animation-duration: .8s;
+		animation-timing-function: ease;
+	}
+
+
+	.main-class > div:nth-child(n)>div:nth-child(2):hover{
+		visibility: visible;
+		animation-name: example;
+		background: #333;
+		opacity: 1;
+		box-shadow: 1px 1px 7px rgba(0,0,0,.5);
+		animation-duration: .8s;
+		animation-timing-function: ease;
+	}
+
+
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n):hover{
+		color: skyblue;
+		background: #50555e;
+/*		border-top: .1em dashed #f2f2f2;
+		border-bottom: .1em dashed #f2f2f2;*/
+	}
+
+
+
+</style>
