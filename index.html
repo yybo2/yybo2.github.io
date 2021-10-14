@@ -347,175 +347,58 @@
 
 
 <!--</html>-->
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <title>html引入vue.js</title>
+</head>
 <body>
-<div id="app">
-    <div style="background: #282828;height: 100vh;color:#fff;padding-top: calc((100vh - 300px) / 2);">
-        <div class="out-div">
-            <div class="zp">
-                <div class="kd-1"></div>
-                <div class="kd-1" style="transform: rotate(90deg);"></div>
-                <div class="kd-2" style="transform: rotate(30deg);"></div>
-                <div class="kd-2" style="transform: rotate(60deg);"></div>
-                <div class="kd-2" style="transform: rotate(120deg);"></div>
-                <div class="kd-2" style="transform: rotate(150deg)"></div>
-                <div class="inner-zp">
-                    <div class="zp-center">
-                        <div class="yx"></div>
-                        <div class="sz" :style="{transform:'rotate('+degH+'deg)'}"></div>
-                        <div class="fz" :style="{transform:'rotate('+degM+'deg)'}"></div>
-                        <div class="mz" :style="{transform:'rotate('+degS+'deg)'}"></div>
-                    </div>
-                    <div class="time-show">{{ h<10?'0'+h:h}}:{{m<10?'0'+m:m }}:{{ s<10?'0'+s:s }}</div>
-                </div>
-            </div>
+    <div id="app">
+        <h1>Hi</h1>
+        <div class="main-box">
+            <a v-for="(item,index) in data" :key="index" :href="url+item.href">{{item.name}}</a>
         </div>
     </div>
-</div>
-</body>
-<head>
-    <meta charset="UTF-8">
-    <!-- 引入样式 -->
-<!--    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
-    <!-- 先引入 Vue -->
-    <script crossorigin="anonymous" integrity="sha512-qRXBGtdrMm3Vdv+YXYud0bixlSfZuGz+FmD+vfXuezWYfw4m5Ov0O4liA6UAlKw2rh9MOYULxbhSFrQCsF1hgg==" src="https://lib.baomitu.com/vue/2.6.14/vue.common.dev.js"></script>    <!-- 引入 http-vue-loader -->
-<!--    <script src="https://unpkg.com/http-vue-loader"></script>-->
-</head>
-<script>
-    new Vue({
+    <script>
+         new Vue({
         el:'#app',
-        name: 'test',
+        name: 'index',
         data() {
             return {
-                h: 0,
-                degH: 0,
-                m: 0,
-                degM: 0,
-                s: 0,
-                degS: 0
+                url:'https://yybo2.github.io',
+                data:[{name:'CSS 时钟',href:'/clock'},{name:'CSS TagNav',href:'/tagNav'}]
             }
         },
         methods: {
-            changeTime() {
-                let date = new Date();
-                this.h = date.getHours();
-                this.m = date.getMinutes();
-                this.s = date.getSeconds();
-                this.degS = (this.s / 60) * 360;
-                this.degM = ((this.m * 60) + this.s) / 3600 * 360
-                this.degH = (((this.h * 60 + this.m) * 60) + this.s) / (3600 * 12) * 360
-            }
+
+
         },
         created() {
-            setInterval(() => {
-                this.changeTime()
-            }, 1000)
-
+            var fname = "menu-data.json"
+            
+            var rq = new XMLHttpRequest();
+            
+            rq.open('GET',fname,true);
+            
+            rq.send(null);
+            
+            console.log(rq.status);
+            
+            console.log(rq.responseText);
         }
     })
 </script>
-
 <style>
-
-    .out-div {
-        transform: scale(2.5);
-        border: 7px solid #282828;
-        margin: 0 auto;
-        width: 300px;
-        height: 300px;
-        background: #282828;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: -2px -2px 5px rgb(67 67 67 / 50%), inset 2px 2px 5px rgb(0 0 0 / 50%), inset -2px -2px 5px rgb(67 67 67 / 50%), 2px 2px 5px rgb(0 0 0 / 30%);
+    .main-box{
+        display: grid;
     }
 
-
-
-    .zp {
-        box-sizing: border-box;
-        position: relative;
-        width: 280px;
-        height: 280px;
-        background: #282828;
-        border-radius: 50%;
-        padding: 10px;
-    }
-
-    .kd-1{
-        width: 10px;height:260px;background: #aa4eff;position: absolute;margin-left: 125px;
-    }
-
-    .kd-2{
-        width: 6px;height:260px;background: #8c8c8c;position: absolute;margin-left: 127px;
-    }
-
-    .inner-zp{
-        width: 200px;
-        height:200px;background: #282828;position: absolute;z-index: 10;border-radius: 50%;top:40px;left: 40px;
-    }
-
-    .zp-center{
-        height:16px;width: 16px;margin-top: 92px;margin-left: 92px;position: relative;
-    }
-
-    .sz {
-        position: absolute;
-        width: 6px;
-        height: 60px;
-        background: #59b9ff;
-        left: 4px;
-        top: -53px;
-        transform-origin: bottom;
-        border-radius: 10px 10px 0 0;
-    }
-
-    .fz {
-        position: absolute;
-        width: 4px;
-        height: 90px;
-        background: #59b9ff;
-        left: 5px;
-        top: -83px;
-        border-radius: 10px 10px 0 0;
-        transform-origin: bottom;
-    }
-
-    .mz {
-        position: absolute;
-        width: 2px;
-        height: 115px;
-        background: #ff9900;
-        left: 6px;
-        top: -108px;
-        transform-origin: bottom;
-        border-radius: 10px 10px 0 0;
-    }
-
-    .yx {
-        background: #a9a9a9;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        position: absolute;
-        z-index: 11;
-        box-shadow: #969896;
-    }
-
-    .time-show{
-        background: #798060;
-        border: 5px solid #282828;
-        box-shadow: -2px -2px 5px rgb(67 67 67 / 50%), inset 2px 2px 5px rgb(0 0 0 / 50%), inset -2px -2px 5px rgb(153 153 153 / 50%), 2px 2px 5px rgb(0 0 0 / 30%);
-        border-radius: 8px;
-        width: 60%;
-        margin-left: 20%;
-        margin-top: 8%;
-        color:#07080c;
-        font-size: 18px;
-        text-align: center;
-        font-weight: 600;
-        font-family: emoji;
+    .main-box>a:nth-child(n){
+       
     }
 </style>
-
+</body>
+</html>
