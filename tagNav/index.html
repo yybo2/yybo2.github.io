@@ -3,47 +3,52 @@
 </head>
 <div class="main-class">
 	<div>
-		<div class="title">标题1</div>
+		<div>主页</div>
+	</div>
+	<div>
+		<div>产品</div>
 		<div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
+			<div>热门产品</div>
+			<div>弹性计算</div>
+			<div>存储</div>
+			<div>数据库</div>
+			<div>安全</div>
+			<div>大数据</div>
+			<div>人工智能</div>
+			<div>网络与CDN</div>
+			<div>视频服务</div>
+			<div>容器与中间件</div>
 		</div>
 	</div>
 	<div>
-		<div>标题2</div>
+		<div>云市场</div>
 		<div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
+			<div>网站建设</div>
+			<div>设计师定制建站</div>
+			<div>模板自助建站</div>
+			<div>功能定制建站</div>
+			<div>小程序</div>
 		</div>
 	</div>
 	<div>
-		<div>标题3</div>
+		<div>解决方案</div>
 		<div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
+			<div>行业解决方案</div>
+			<div>通用解决方案</div>
+			<div>企业成长解决方案</div>
+			<div>生态解决方案</div>
+			<div>解决方案体验中心</div>
 		</div>
 	</div>
 	<div>
-		<div>标题4</div>
+		<div>支持与服务</div>
 		<div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
-			<div>我是子项目</div>
+			<div>文档与工具</div>
+			<div>文档中心</div>
+			<div>新手入门</div>
+			<div>自助服务</div>
+			<div>开发者资源</div>
+			<div>最佳实践</div>
 		</div>
 	</div>
 </div>
@@ -76,26 +81,47 @@
 	}
 
 	.main-class{
-		display: flex;
-		/*border-top: 1px solid #b7b7b7;*/
-		border-left: 1px solid #b7b7b7;
+		  display: flex;
     	width: max-content;
     	margin: 200px auto;
 	}
+
+	.main-class:after{
+    transition: all .25s ease-in-out;
+    font-size: 14px;
+    color: #4b4b4b;
+    font-weight: bold;
+    background: #cccccc;
+    padding: 5px 13px;
+    content: '';
+    border-radius: 0 8px 8px 0;
+	}
+
+	.main-class:before{
+		border-right: 1px solid #b7b7b7;
+    transition: all .25s ease-in-out;
+    font-size: 14px;
+    color: #4b4b4b;
+    font-weight: bold;
+    background: #cccccc;
+    padding: 5px 13px;
+    content: '';
+    border-radius: 8px 0 0 8px;
+	}
+
 	.main-class > div:nth-child(n)>div:nth-child(1) {
 		border-right: 1px solid #b7b7b7;
-		/*border-bottom: 1px solid #b7b7b7;*/
 		transition: all .25s ease-in-out;		
 		font-size: 14px;
 		color: #4b4b4b;
 		font-weight: bold;
 		background: #cccccc;
-		padding: 5px 28px;
+		padding: 5px 30px;
 		cursor: pointer;
 	}
 	.main-class > div:nth-child(n){
 		position: relative;
-				perspective: 1500;
+		perspective: 1500;
 		-webkit-perspective: 1500;
 	}
 
@@ -118,9 +144,8 @@
 
 	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n) {
 		padding: 0 20px; 
-/*		border-top: .1em dashed #4b4b4b;
-		border-bottom: .1em dashed #4b4b4b;*/
 		cursor: pointer;
+		transition: all .15s linear;
 	}
 
 	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-last-child(1)  {
@@ -130,10 +155,9 @@
 	}
 	
 	.main-class > div:nth-child(n):hover >div:nth-child(1) {
-		color: skyblue;
+		color: orange;
 		background: #4b4b4b;
 	}
-
 
 	.main-class > div:nth-child(n)>div:nth-child(1):hover+div{
 		visibility: visible;
@@ -145,7 +169,6 @@
 		animation-timing-function: ease;
 	}
 
-
 	.main-class > div:nth-child(n)>div:nth-child(2):hover{
 		visibility: visible;
 		animation-name: example;
@@ -156,14 +179,55 @@
 		animation-timing-function: ease;
 	}
 
-
-	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n):hover{
-		color: skyblue;
-		background: #50555e;
-/*		border-top: .1em dashed #f2f2f2;
-		border-bottom: .1em dashed #f2f2f2;*/
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n):hover::after{
+    background: #50555e;
+    content: '\00A0';
+    position: absolute;
+    padding: 0 20px;
+    z-index: -1;
+    width: calc(100% - 40px);
+    left: 0;
 	}
 
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n):hover{
+		color: orange;
+    transition: all .15s linear;
+	}
 
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n)::after{
+    background: #50555e;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    left: 0;
+    transition: all .2s linear;
+	}
+
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-last-child(1)::after{
+    background: #50555e;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    left: 0;
+    transition: all .2s linear;
+    border-radius: 0 0 8px 8px !important;
+	}
+
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-last-child(1):hover::after{
+    background: #50555e;
+    content: '\00A0';
+    position: absolute;
+    padding: 0 20px;
+    z-index: -1;
+    width: calc(100% - 40px);
+    left: 0;
+    border-radius: 0 0 8px 8px !important;
+	}
+
+	.main-class > div:nth-child(n)>div:nth-child(2)>div:nth-child(n){
+		transition: all .15s linear;
+	}
 
 </style>
