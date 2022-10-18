@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://unpkg.zhimg.com/vue@2.6.14/dist/vue.js"></script>
 
+    <title>html引入vue.js</title>
+</head>
+<body>
+<div id="app">
+    <div class="main">
+        <img id="img_body" src="img/3.png"/>
+        <div class="item" v-on:click="copy">
+            <div class="img" style="width: 100%;height:100%;background-image: url('img/3.png')">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        name: 'index',
+        data() {
+            return {
+                max: 1348
+            }
+        },
+        methods: {
+            copy(e) {
+                this.handleCopyImg()
+            },
+            handleCopyImg() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                canvas.width = 100;
+                canvas.height = 100;
+                img.crossOrigin = "Anonymous";
+                img.src = 'img/3.png';
+                img.onload = () => {
+                    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    ctx.drawImage(img, 0, 0);    // 将canvas转为blob
+                    canvas.toBlob(async blob => {
+                        console.log(blob);
+                        const data = [
+                            new ClipboardItem({
+                                [blob.type]: blob,
+                            }),
+                        ];      // https://w3c.github.io/clipboard-apis/#dom-clipboard-write
+                        await navigator.clipboard.write(data)
+                            .then(
+                                () => {
+                                    console.log("Copied to clipboard successfully!");
+                                },
+                                () => {
+                                    console.error("Unable to write to clipboard.");
+                                }
+                            );
+                    });
+                }
+            }
+        },
+        created() {
+            this.handleCopyImg()
+        }
+    })
+</script>
+<style>
+    body {
+        margin: 0;
+    }
+
+    #app {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .main {
+        width: 800px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .item {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        position: relative;
+    }
+
+    .img {
+        border-radius: 10px;
+        border: 1px dashed #b6b6b6;
+        transition: .3s;
+        background-size: 100%;
+    }
+
+    .img:hover {
+        transform: scale(1.2);
+    }
+
+    .img:after {
+        transition: .3s;
+        cursor: pointer;
+    }
+
+    .img:hover:after {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: 'Copy';
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        color: #fff;
+        background: #00000061;
+    }
+</style>
+</body>
+</html>
